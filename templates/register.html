@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-container">
+  <form method="post">
+      <h1>Register</h1>
+
+      <label>Username</label>
+      <input type="text" name="username" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Password</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Register</button>
+
+      <p>Already have an account? <a href="/login">Login here</a></p>
+  </form>
+</div>
+{% endblock %}

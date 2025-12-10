@@ -1,0 +1,258 @@
+/* --- GENERAL PAGE LAYOUT --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f6f7fb;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #2c3e50;
+    padding: 15px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* centers links */
+    gap: 20px; /* space between links */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 2px; /* space for underline */
+    position: relative;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f1c40f; /* highlight color */
+    border-radius: 1px;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: auto; /* stick to bottom */
+}
+
+footer p {
+    margin: 0;
+}
+
+main {
+    flex: 1; /* take remaining space */
+    padding: 25px;
+}
+
+/* --- FLASH MESSAGES --- */
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.flashes li {
+    background: #fff6c4;
+    border-left: 5px solid #f1c40f;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+/* --- POSTS STYLE --- */
+.posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.post {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.post h2,
+.post h3 {
+    margin: 0 0 10px 0;
+}
+
+.post p {
+    line-height: 1.4;
+}
+
+.meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+/* --- BUTTONS --- */
+.button,
+button {
+    background: #3498db;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button:hover,
+button:hover {
+    background: #2980b9;
+}
+
+/* --- DELETE BUTTON --- */
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 8px;
+    display: inline-block;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* --- DASHBOARD ACTION LINKS --- */
+.actions a {
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-right: 8px;
+    transition: background 0.2s;
+    display: inline-block;
+}
+
+/* Read button - blue */
+.actions a[href^="/post"] {
+    background-color: #3498db;
+}
+
+.actions a[href^="/post"]:hover {
+    background-color: #2980b9;
+}
+
+/* Edit button - orange */
+.actions a[href^="/edit"] {
+    background-color: #f39c12;
+}
+
+.actions a[href^="/edit"]:hover {
+    background-color: #e67e22;
+}
+
+/* Ensure forms inside .actions have no extra border */
+.actions form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* --- AUTH FORMS CENTERING --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* full height of main area */
+}
+
+.auth-container form {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Add spacing above submit button */
+form button[type="submit"] {
+    margin-top: 15px; /* space between last input and button */
+}
+
+/* --- FORM STYLING --- */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    max-width: 600px;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    background: #fafafa;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    background: white;
+}
+
+/* --- PAGINATION --- */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* center pagination links */
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}
+
+.pagination span {
+    font-size: 0.9em;
+    color: #444;
+}

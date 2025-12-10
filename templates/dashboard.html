@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Dashboard</h1>
+
+<!-- Create New Post button -->
+<div style="margin-bottom: 20px;">
+    <a class="button" href="/create">Create New Post</a>
+</div>
+
+<!-- List of posts -->
+<div class="posts">
+    {% for post in posts.items %}
+    <article class="post">
+        <h3>{{ post.title }}</h3>
+        <p class="meta">{{ post.created_at.strftime('%Y-%m-%d') }}</p>
+
+        <p>{{ post.body[:150] }}{% if post.body|length > 150 %}...{% endif %}</p>
+
+        <div class="actions">
+            <a href="/post/{{ post.id }}">Read</a>
+            <a href="/edit/{{ post.id }}">Edit</a>
+
+            <form action="/delete/{{ post.id }}" method="post" style="display: inline;">
+                <button type="submit" class="delete-btn">Delete</button>
+            </form>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+    {% if posts.has_prev %}
+    <a href="/dashboard?page={{ posts.prev_num }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ posts.page }} / {{ posts.pages }}</span>
+
+    {% if posts.has_next %}
+    <a href="/dashboard?page={{ posts.next_num }}">Next</a>
+    {% endif %}
+</div>
+
+{% endblock %}
