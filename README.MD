@@ -1,61 +1,38 @@
-# Simple Blog Application
-
-This is a simple blog web application built with **Flask** and **SQLAlchemy**.  
-It supports user registration, login/logout, creating, editing, deleting posts, and pagination.
-
----
-
 ## Getting Started
 
-1. Clone the repository
-```bash
+### Clone the repository
+
 git clone https://github.com/Ashokkoirala10/Blog-Application.git
 cd flask_simple_blog
 
 
-2. Start your SQL server
+### Set up Python environment
 
-Make sure MySQL/MariaDB is running.
-
-3. Create the database
-
-Login to MySQL and create the database:
-
-CREATE DATABASE blogdb;
-
-4. Set up Python environment
-python -m venv blog
-cd blog_simple_blog
-source blog/Scripts/activate   # Windows
-# OR
-
-source blog/bin/activate       # Linux/Mac
+python -m venv blog_env
+# Activate the environment:
+# Windows
+blog_env\Scripts\activate
+# Linux / Mac
+source blog_env/bin/activate
 
 
+### Install dependencies
 
-5. Install dependencies
 pip install -r requirements.txt
 
 
+###  Run the application
 
-6. Update database URL (if needed)
-
-Open app.py and edit the database URL at the top if needed:
-
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/blogdb"
-
-
-
-7. Run the application
 python app.py
 
 
+## Access the app
+Open your browser and go to http://127.0.0.1:5000
+.
 
-The app will start on http://127.0.0.1:5000/.
+⚠️ Note: No database setup or migrations are required. The app uses SQLite (blog.db) and automatically creates the tables on first run.
 
-
-
-##Features
+## Features
 
 User registration, login, and logout
 
@@ -63,17 +40,19 @@ Create, read, update, delete blog posts
 
 View all posts on the home page
 
-Pagination for multiple posts
-
 Dashboard for managing your own posts
 
-Simple responsive layout with basic styling
+Pagination for multiple posts
 
+Clean and responsive layout with minimal styling
 
-##Notes
+Secure password hashing using werkzeug.security
 
-Default user password is hashed with werkzeug.security.
+## Notes
 
-Delete button is protected with author check.
+Default database file: blog.db (SQLite)
 
-Modify POSTS_PER_PAGE in app.py to change pagination size.
+Each post's Delete and Edit buttons are protected: only the author can perform these actions
+
+Modify POSTS_PER_PAGE in app.py to change pagination size
+

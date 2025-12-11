@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="welcome-msg">Welcome, {{ user.username }}!</h2>
+<p class="all-posts-heading">All Posts</p>
+
+<div class="posts">
+  {% if posts.items %}
+    {% for post in posts.items %}
+    <article class="post">
+        <h3>{{ post.title }}</h3>
+        <p class="meta">
+          By {{ post.author.username if post.author else 'Unknown' }} — {{ post.created_at.strftime('%Y-%m-%d') }}
+        </p>
+        <p>{{ post.body[:150] }}{% if post.body|length > 150 %}...{% endif %}</p>
+        <div class="actions">
+          <a href="/post/{{ post.id }}">Read</a>
+        </div>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p style="text-align:center; color:#666;">No posts available.</p>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block bottom_controls %}
+<div class="pagination">
+  {% if posts.has_prev %}
+  <a href="{{ url_for('home', page=posts.prev_num) }}">Previous</a>
+  {% endif %}
+  <span>Page {{ posts.page }} / {{ posts.pages }}</span>
+  {% if posts.has_next %}
+  <a href="{{ url_for('home', page=posts.next_num) }}">Next</a>
+  {% endif %}
+</div>
+{% endblock %}
