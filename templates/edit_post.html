@@ -10,7 +10,9 @@
     <label>Body</label>
     <textarea name="body" rows="10" required>{{ post.body if post else '' }}</textarea>
 
-    <button type="submit">{{ action }}</button>
+    <div style="display:flex; justify-content:flex-end;">
+        <button type="submit">{{ action }}</button>
+    </div>
 </form>
 </div>
 {% endblock %}
